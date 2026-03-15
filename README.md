@@ -7,9 +7,9 @@ Aplikasi manajemen tugas (Todo List) yang dibangun menggunakan React Native dan 
 Untuk menjalankan proyek ini secara lokal, pastikan telah menginstal daftar dependensi berikut. Jalankan perintah ini di terminal proyek:
 
 **1. Penyimpanan Lokal (AsyncStorage)**
-\`\`\`bash
+`bash
 npx expo install @react-native-async-storage/async-storage
-\`\`\`
+`
 
 **2. Safe Area Context**
 \`\`\`bash
