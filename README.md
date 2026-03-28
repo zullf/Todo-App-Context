@@ -7,30 +7,30 @@ Aplikasi manajemen tugas (Todo List) yang dibangun menggunakan React Native dan 
 Untuk menjalankan proyek ini secara lokal, pastikan telah menginstal daftar dependensi berikut. Jalankan perintah ini di terminal proyek:
 
 **1. Penyimpanan Lokal (AsyncStorage)**
-\`\`\`bash
+`
 npx expo install @react-native-async-storage/async-storage
-\`\`\`
+`
 
 **2. Safe Area Context**
-\`\`\`bash
+`
 npx expo install react-native-safe-area-context
-\`\`\`
+`
 
 **3. Animasi & Gesture (Reanimated & Gesture Handler)**
-\`\`\`bash
+`
 npx expo install react-native-reanimated
 npx expo install react-native-gesture-handler
-\`\`\`
+`
 
 **4. Fitur Drag and Drop List**
-\`\`\`bash
+`
 npx expo install react-native-draggable-flatlist
-\`\`\`
+`
 
 **5. Babel Preset (Jika terjadi error kompilasi)**
-\`\`\`bash
+`
 npm install --save-dev babel-preset-expo
-\`\`\`
+`
 
 *(Catatan: Pastikan untuk menambahkan plugin reanimated di dalam `babel.config.js` dan restart server Expo dengan `npx expo start -c` setelah instalasi).*
 
