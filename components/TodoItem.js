@@ -4,7 +4,6 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 const TodoItem = memo(({ todo, onToggle, onDelete}) => {
   return (
     <View style={styles.container}>
-      {/* Checkbox */}
       
       <TouchableOpacity
         style={[styles.checkbox, todo.done && styles.checkboxDone]}
@@ -12,7 +11,6 @@ const TodoItem = memo(({ todo, onToggle, onDelete}) => {
       >
         {todo.done && <Text style={styles.checkmark}>✓</Text>}
       </TouchableOpacity>
-      {/* Teks */}
       <Text style={[styles.text, todo.done && styles.textDone]}>
         {todo.text}
       </Text>
@@ -20,7 +18,6 @@ const TodoItem = memo(({ todo, onToggle, onDelete}) => {
         <Text style={styles.dueDate}>Deadline: {todo.dueDate}</Text>
       )}
 
-      {/* Hapus */}
       <TouchableOpacity
         style={styles.deleteBtn}
         onPress={() => onDelete(todo.id)}

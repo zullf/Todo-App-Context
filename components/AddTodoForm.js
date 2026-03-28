@@ -18,7 +18,7 @@ const AddTodoForm = ({ onAdd }) => {
         dueDate: dueDate,
       });
       setText("");
-      setDueDate(""); // Reset input
+      setDueDate(""); 
     }
   };
 

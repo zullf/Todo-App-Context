@@ -5,7 +5,6 @@ export const useTodos = (filter = "all") => {
   const { todos, addTodo, toggleTodo, deleteTodo, clearDone, reorderTodos } =
     useTodoContext();
 
-  // Computed values — gunakan useMemo untuk optimasi
   const filteredTodos = useMemo(() => {
     switch (filter) {
       case "active":

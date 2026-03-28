@@ -8,15 +8,12 @@ import React, {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { todoReducer, ACTIONS } from "./TodoReducer";
 
-// 1. Buat Context
 const TodoContext = createContext(null);
 const STORAGE_KEY = "@todos";
 
-// 2. Buat Provider Component
 export const TodoProvider = ({ children }) => {
   const [todos, dispatch] = useReducer(todoReducer, []);
 
-  // Load data dari AsyncStorage saat mount
   useEffect(() => {
     const loadTodos = async () => {
       try {
@@ -32,14 +29,12 @@ export const TodoProvider = ({ children }) => {
     loadTodos();
   }, []);
 
-  // Simpan ke AsyncStorage setiap ada perubahan
   useEffect(() => {
     AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(todos)).catch((err) =>
       console.error("Error saving:", err),
     );
   }, [todos]);
 
-  // Action creators (lebih mudah dipanggil di komponen)
   const addTodo = useCallback((todoData) => {
     dispatch({ type: ACTIONS.ADD_TODO, payload: todoData });
   }, []);
@@ -58,7 +53,6 @@ export const TodoProvider = ({ children }) => {
   dispatch({ type: ACTIONS.REORDER_TODO, payload: newTodos });
 }, []);
 
-  // Value yang dibagikan ke seluruh tree
   const value = {
     todos,
     dispatch,
@@ -71,7 +65,6 @@ export const TodoProvider = ({ children }) => {
   return <TodoContext.Provider value={value}>{children}</TodoContext.Provider>;
 };
 
-// 3. Export custom hook untuk konsumsi
 export const useTodoContext = () => {
   const context = useContext(TodoContext);
   if (!context) {

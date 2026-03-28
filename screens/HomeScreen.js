@@ -19,13 +19,10 @@ import TodoItem from "../components/TodoItem";
 import FilterBar from "../components/FilterBar";
 
 const HomeScreen = () => {
-  // Theme Context
   const { colors, toggleTheme, theme } = useTheme();
 
-  // Filter Hook
   const { activeFilter, setFilter } = useFilter();
 
-  // Todo Hook
   const {
     todos,
     stats,
@@ -41,7 +38,6 @@ const HomeScreen = () => {
       <StatusBar barStyle="light-content" />
 
       <View style={styles.container}>
-        {/* Header */}
         <View style={styles.header}>
           <Text style={[styles.title, { color: colors.text }]}>My Todos</Text>
 
@@ -49,7 +45,6 @@ const HomeScreen = () => {
             {stats.completed} dari {stats.total} selesai
           </Text>
 
-          {/* Toggle Dark Mode */}
           <TouchableOpacity style={styles.themeBtn} onPress={toggleTheme}>
             <Text style={{ color: colors.text }}>
               {theme === "light" ? "Tema Gelap" : "Tema Terang"}
@@ -57,25 +52,22 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
 
-        {/* Form tambah todo */}
         <AddTodoForm onAdd={addTodo} />
 
-        {/* Filter */}
         <FilterBar
           activeFilter={activeFilter}
           onFilterChange={setFilter}
           stats={stats}
         />
 
-        {/* List Todo */}
         <DraggableFlatList
           data={todos}
-          onDragEnd={({ data }) => reorderTodos(data)} // Simpan urutan baru saat jari dilepas
+          onDragEnd={({ data }) => reorderTodos(data)} 
           keyExtractor={(item) => item.id}
           renderItem={({ item, drag, isActive }) => (
             <ScaleDecorator>
               <TouchableOpacity
-                onLongPress={drag} // Aktifkan drag SAAT DITEKAN LAMA (Long Press)
+                onLongPress={drag} 
                 disabled={isActive}
                 style={[
                   isActive && {
@@ -83,7 +75,7 @@ const HomeScreen = () => {
                     shadowColor: "#000",
                     shadowOpacity: 0.1,
                     shadowRadius: 5,
-                  }, // Efek melayang saat di-drag
+                  },
                 ]}
               >
                 <TodoItem
@@ -103,7 +95,6 @@ const HomeScreen = () => {
           showsVerticalScrollIndicator={false}
         />
 
-        {/* Clear Done */}
         {stats.completed > 0 && (
           <Text style={styles.clearBtn} onPress={clearDone}>
             Hapus {stats.completed} item selesai
